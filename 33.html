@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球时钟</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between; /* 让四个div平均分布 */
+            align-items: center;
+            width: 100%; /* 适应全屏 3840px */
+            height: 600px; /* 设置总高度 */
+            padding: 0; /* 移除左右 padding */
+        }
+
+        .container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: #0000002b;
+            border-radius: 10px;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            border: 8px solid #000;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+            background-position: 8px 45px;
+            background-size: 390px;
+            /* margin-top: 10px;
+            margin-bottom: 10px; */
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            background: black;
+            border-radius: 3px;
+        }
+
+        .h {
+            width: 8px;
+            height: 70px;
+            background: black;
+            box-shadow: 4px 0px 7px 1px #0000005c;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .m {
+            width: 6px;
+            height: 84px;
+            background: black;
+            box-shadow: 4px 0px 7px 1px #5b5b5be0;
+            transform: translateX(-50%) rotate(320deg);
+
+        }
+
+        .s {
+            width: 4px;
+            height: 93px;
+            background: red;
+            box-shadow: 4px 0px 7px 1px #5b5b5be0;
+            transform: translateX(-50%) rotate(350deg);
+        }
+
+        .center {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: red;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 4px 0px 7px 1px #0000005c;
+        }
+
+        .scale {
+            position: absolute;
+            width: 3px;
+            height: 30px;
+            background: black;
+            left: 50%;
+            transform-origin: center 140px;
+        }
+
+        .scale.big {
+            width: 3px;
+            height: 30px;
+            background: #000;
+        }
+
+        .number {
+            position: absolute;
+            font-size: 28px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .num-12 {
+            top: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .num-3 {
+            right: 32px;
+            top: 49%;
+            transform: translateY(-50%);
+        }
+
+        .num-6 {
+            bottom: 30px;
+            left: 50.2%;
+            transform: translateX(-50%);
+        }
+
+        .num-9 {
+            left: 38px;
+            top: 49%;
+            transform: translateY(-50%);
+        }
+        .clock_img, img {
+            width: 960px;
+            height: 600px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        /* 固定间距 */
+        .clock_img:first-child {
+            margin-right: 20px;
+            margin-left: -30px; /* 紧贴左侧 */
+        }
+
+        .clock_img:nth-child(3) {
+            margin: 0 55px; /* 左右都有间距 */
+        }
+
+        .clock:last-child {
+            margin-right: 0; /* 紧贴右侧 */
+        }
+        .clock_img:nth-child(3) img {
+            object-fit: fill;
+        }
+        #us {
+            background-position: -78px -5px;
+            background-size: 498px;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="fullscreen-btn">
+        <div class="clock_img">
+            <img src="./images/france.jpg" alt="">
+        </div>
+        <div class="clock" id="cn" style="background-image: url('./images/france_time.png');"></div>
+        <div class="clock_img">
+            <img src="./images/微信图片_20250312140720.jpg" alt="">
+        </div>
+        <div class="clock" id="us"
+            style="background-image: url('./images/canada_time.png');">
+        </div>
+    </div>
+    <script src="time.js"></script>
+</body>
+</html>
